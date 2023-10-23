@@ -20,7 +20,7 @@ class slideObj {
 }
 
 //This event listener is to make sure the DOM is loaded before the script is run
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', () => {
     const slideCount = (document.querySelectorAll('[data-slide-id]')).length;
 
     setArray(slideArray, thumbnailsArray, namesArray, descriptionsArray);
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 //The purpose of this function is to place the info from all three image, name, and description arrays into one _array of objects
-function setArray(_slideArray, _thumbnailsArray, _namesArray, _descriptionsArray) {
+let setArray = (_slideArray, _thumbnailsArray, _namesArray, _descriptionsArray) => {
     for (let i = 0; i < _thumbnailsArray.length; i++) {
         _slideArray.push(new slideObj(_thumbnailsArray[i], _namesArray[i], _descriptionsArray[i]));
     }
@@ -37,7 +37,7 @@ function setArray(_slideArray, _thumbnailsArray, _namesArray, _descriptionsArray
 }
 
 //The purpose of this function is to shuffle the array to randomize the occurrence of slides
-function shuffleArray(_array) {
+let shuffleArray = (_array) => {
     let currentIndex = _array.length, temporaryValue, randomIndex;
 
     while (0 !== currentIndex) {
@@ -54,7 +54,7 @@ function shuffleArray(_array) {
 }
 
 //The purpose of this function is to set the slides in the DOM
-function setSlides(_array, index){
+let setSlides = (_array, index) => {
     const imageElements = document.querySelectorAll('[data-image-id]');
     const nameElements = document.querySelectorAll('[data-name-id]');
     const descriptionElements = document.querySelectorAll('[data-description-id]');
